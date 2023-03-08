@@ -6,7 +6,7 @@ engine = create_engine('sqlite:///phase3_project.db')
 
 Base = declarative_base()
 
-class Student(Base):
+class Students(Base):
     __tablename__ = 'students'
 
     id = Column(Integer(), primary_key=True)
@@ -20,7 +20,7 @@ class Student(Base):
             f'grade = {self.grade}' + \
             f'subject = {self.subject})'
 
-class Tutor(Base):
+class Tutors(Base):
     __tablename__ = 'tutors'
 
     id = Column(Integer(), primary_key= True)
