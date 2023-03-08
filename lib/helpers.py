@@ -1,7 +1,7 @@
 # from models import Students, Tutor
 
-YES = ['y', 'ye', 'yes']
-NO = ['n', 'no']
+# YES = ['y', 'ye', 'yes']
+# NO = ['n', 'no']
 
 def create_student_table(students):
     print('-' * 50)

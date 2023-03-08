@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from models import Students
 from helpers import (create_student_table) 
 
-engine = create_engine('sqlite:///db/phase3_project.db')
+engine = create_engine('sqlite:///phase3_project.db')
 session = sessionmaker(bind=engine)()
 
 
@@ -20,6 +20,6 @@ if __name__ == '__main__':
     IDs and Names Listed Below:
     
     ''')
-    student = session.query(Students)
+    students = session.query(Students)
     
-    create_student_table(student)
+    create_student_table(students)
