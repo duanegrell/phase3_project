@@ -19,3 +19,17 @@ class Student(Base):
             f'name = {self.name}, ' + \
             f'grade = {self.grade}' + \
             f'subject = {self.subject})'
+
+class Tutor(Base):
+    __tablename__ = 'tutors'
+
+    id = Column(Integer(), primary_key= True)
+    name = Column(String())
+    specialty = Column(String())
+    rate = Column(Integer())
+
+    def __repr__(self):
+        return f'Tutor(id={self.id}), ' + \
+            f'name = {self.name}, ' + \
+            f'specialty = {self.specialty} ' + \
+            f'rate = {self.rate} '
