@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine, func, ForeignKey
 from sqlalchemy import Table, Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -38,8 +38,8 @@ class TutorSessions(Base):
     __tablename__ = 'tutoring'
 
     id = Column(Integer(), primary_key=True)
-    student_name = Column(String(), ForeignKey('student.id'))
-    tutor_name = Column(String(), ForeignKey('tutor.id'))
+    student_name = Column(String(), ForeignKey('students.id'))
+    tutor_name = Column(String(), ForeignKey('tutors.id'))
     date = Column(DateTime())
     time = Column(DateTime())
     cost = Column(Integer())
@@ -52,6 +52,6 @@ class TutorSessions(Base):
             f'time = {self.time}, ' + \
             f'cost = {self.cost}, '
 
-Base metadata create(engine)
+Base.metadata.create_all(engine)
 
 
