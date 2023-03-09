@@ -31,3 +31,32 @@ def create_tutors_table(tutors):
 
 def total_rate_calculator(rate, hours):
     return rate * hours
+
+def create_subjects_table(specialties):
+    print('-' * 25)
+    print(f'|ID  |SUBJECT{" " * 11}|')
+    print('-' * 25)
+    for specialty in specialties:
+        id_spaces = 4 - len(str(specialty.id))
+        specialty_spaces = 18 - len(specialty.subject)
+        print(f'|{specialty.id}{" " * id_spaces}|{specialty.subject}{" " * specialty_spaces}|')
+    print('-' * 25)
+
+
+def create_filtered_tutors_table (tutors, subject):
+    print ("Hello fitered tutors")
+    print('-' * 75)
+    print(f'|ID  |TUTOR NAME{" " * 24}|SPECIALTY{" " * 12}|PRICE{" " * 6}|')
+    print('-' * 75)
+    for tutor in tutors:
+        if tutor.specialty == subject:
+            id_spaces = 4 - len(str(tutor.id))
+            name_spaces = 34 - len(tutor.name)
+            specialty_spaces = 21 - len(tutor.specialty)
+            rate_spaces = 10 - len(f'{tutor.rate:.2f}')
+            output_string = f'|{tutor.id}{" " * id_spaces}|' + \
+                f'{tutor.name}{" " * name_spaces}|' + \
+                f'{tutor.specialty}{" " * specialty_spaces}|' + \
+                f'${tutor.rate:.2f}{" " * rate_spaces}|'
+            print(output_string)
+    print('-' * 75)

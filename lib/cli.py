@@ -3,8 +3,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Students, Tutors
-from helpers import (create_student_table, create_tutors_table, total_rate_calculator) 
+from models import Students, Tutors, Subjects
+from helpers import (create_student_table, create_tutors_table, total_rate_calculator,  create_subjects_table, create_filtered_tutors_table) 
 
 engine = create_engine('sqlite:///phase3_project.db')
 session = sessionmaker(bind=engine)()
@@ -35,17 +35,50 @@ if __name__ == '__main__':
         selected_student_id = input('Please enter your student ID: ')
         selected_student = session.query(Students).filter(Students.id == selected_student_id).one_or_none()
     
-    # Display a list of subjects to be tutored in
+    
+    # Display a list of subjects
     print(f'''
     
-    Hi {selected_student.name}, please select the tutor that you would like to meet with
+    Hi {selected_student.name}, please select the subject that you need help with:
 
-    Tutors, Specialties and Rates are Listed Below:
+    Subjects listed below:
     
     ''')
 
+    subjects = session.query(Subjects)
+    create_subjects_table(subjects)
+
+
+    # Student picks the subject from the list
+    selected_subject = None
+    while not selected_subject:
+        selected_subject_id = input('Please enter the ID of the subject you are interested in: ')
+        selected_subject = session.query(Subjects).filter(Subjects.id == selected_subject_id).one_or_none()
+    
+    print(f'''
+    
+    You selected {selected_subject.subject}! Our tutors who specialize in {selected_subject.subject} are:
+    
+    ''')
+
+
+    # Display a list of filtered tutors to be tutored in
     tutors = session.query(Tutors)
-    create_tutors_table(tutors)
+    create_filtered_tutors_table(tutors, selected_subject.subject)
+
+
+    
+    ################ CODE TO DISPLAY ALL THE TUTORS IF NEEDED #########################
+        # print(f'''
+    
+        # Hi {selected_student.name}, please select the tutor that you would like to meet with
+
+        # Tutors, Specialties and Rates are Listed Below:
+    
+        # ''')
+        # tutors = session.query(Tutors)
+        # create_tutors_table(tutors)
+    #####################################################################################
 
     # Student picks a tutor
     selected_tutor = None
@@ -79,5 +112,15 @@ if __name__ == '__main__':
     You have selected to work {selected_tutor.name} who specializes in {selected_tutor.specialty} for {selected_hours} hours.
     
     Total Cost: ${total_cost}
+
+    {selected_tutor.name} will contact you within 24 hours to set up an appointment. 
+
+    Thank you for using Tutor Time!
+        ______     __             _______             _______   ____
+    /_  __/_ __/ /____  ____  /_  __(_)_ _  ___   / ___/ /  /  _/
+     / / / // / __/ _ \/ __/   / / / /  ' \/ -_) / /__/ /___/ /  
+    /_/  \_,_/\__/\___/_/     /_/ /_/_/_/_/\__/  \___/____/___/  
+
+
     
     ''')
