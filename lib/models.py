@@ -34,6 +34,16 @@ class Tutors(Base):
             f'specialty = {self.specialty} ' + \
             f'rate = {self.rate} '
 
+class Subjects(Base):
+    __tablename__ = 'subjects'
+
+    id = Column(Integer(), primary_key = True)
+    subject = Column(String())
+
+    def __repr__(self):
+        return f'Subject(id = {self.id}) ' + \
+            f'subject = {self.subject} '
+
 class TutorSessions(Base):
     __tablename__ = 'tutoring'
 
