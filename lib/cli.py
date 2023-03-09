@@ -111,7 +111,7 @@ if __name__ == '__main__':
     
     You have selected to work {selected_tutor.name} who specializes in {selected_tutor.specialty} for {selected_hours} hours.
     
-    Total Cost: ${total_cost}
+    Total Cost: ${total_cost:.2f}
 
     {selected_tutor.name} will contact you within 24 hours to set up an appointment. 
 

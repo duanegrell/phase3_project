@@ -44,7 +44,6 @@ def create_subjects_table(specialties):
 
 
 def create_filtered_tutors_table (tutors, subject):
-    print ("Hello fitered tutors")
     print('-' * 75)
     print(f'|ID  |TUTOR NAME{" " * 24}|SPECIALTY{" " * 12}|PRICE{" " * 6}|')
     print('-' * 75)
