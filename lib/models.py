@@ -11,14 +11,14 @@ class Students(Base):
 
     id = Column(Integer(), primary_key=True)
     name = Column(String())
-    grade = Column(Integer())
-    subject = Column(String())
+    email = Column(String())
+    phone = Column(Integer())
 
     def __repr__(self):
         return f'Student(id={self.id} ' + \
             f'name = {self.name}, ' + \
-            f'grade = {self.grade}' + \
-            f'subject = {self.subject})'
+            f'email = {self.email}, ' + \
+            f'phone = {self.phone} ' 
 
 class Tutors(Base):
     __tablename__ = 'tutors'
