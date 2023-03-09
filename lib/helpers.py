@@ -28,3 +28,6 @@ def create_tutors_table(tutors):
             f'${tutor.rate:.2f}{" " * rate_spaces}|'
         print(output_string)
     print('-' * 75)
+
+def total_rate_calculator(rate, hours):
+    return rate * hours

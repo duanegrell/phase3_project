@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from models import Students, Tutors
-from helpers import (create_student_table, create_tutors_table) 
+from helpers import (create_student_table, create_tutors_table, total_rate_calculator) 
 
 engine = create_engine('sqlite:///phase3_project.db')
 session = sessionmaker(bind=engine)()
@@ -14,6 +14,12 @@ if __name__ == '__main__':
     #Intro: welcome to the CLI
     print('''
     
+    ______     __             _______             _______   ____
+    /_  __/_ __/ /____  ____  /_  __(_)_ _  ___   / ___/ /  /  _/
+     / / / // / __/ _ \/ __/   / / / /  ' \/ -_) / /__/ /___/ /  
+    /_/  \_,_/\__/\___/_/     /_/ /_/_/_/_/\__/  \___/____/___/  
+
+
     Hi, Welcome to the tutoring scheduler. We're here to help! Please select your student ID.
     ''')
     print('''
@@ -64,7 +70,7 @@ if __name__ == '__main__':
     while not selected_hours:
         selected_hours = input(f'Please enter the amount of hours you would like to work with {selected_tutor.name}: ')
     
-    total_cost = selected_hours * selected_tutor.rate
+    total_cost = total_rate_calculator(int(selected_hours), selected_tutor.rate)
 
     print(f'''
     
