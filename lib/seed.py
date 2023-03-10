@@ -53,44 +53,13 @@ for i in range(20):
     tutor = Tutors(
         name = f"{fake.first_name()}",
         specialty = random.choice(subject_list),
-        rate = randint(100, 300)
+        rate = f"$ {randint(100, 300)}"
     )
     session.add(tutor)
     session.commit()
 
     tutors.append(Tutors)
 
-
-#     return students
-
-# def tutor_name():
-#     session.query(Tutors).delete()
-#     session.commit()
-
-#     print("Let's find you a tutor...")
-#     tutors = [Tutors(
-#         name = fake.name(),
-#         specialty = random.choice(subject_list),
-#         rate = randint(100, 300), 
-#     ) for i in range(15)]
-
-#     session.add_all(tutors)
-#     session.commit()
-
-#     return tutors
-
-# def make_schedule(student_name, tutor_name):
-#     session.query(TutorSessions).delete()
-#     session.commit()
-
-#     print("Time to Learn!")
-    
-
-
-
-
-#     if __name__ == '__main__':
-#         session.query()
 
 
 
