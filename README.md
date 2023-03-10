@@ -1,3 +1,23 @@
+# Tutor Time CLI 
+
+Tutor Time CLI is an interactive CLI that allows users to choose their student ID, a matter in which they need assistance, and a tutor according to their needs with prices of each tutor displayed. 
+
+## Models.py
+Models.py- shows all the tables that were created. We have included a Students, Tutors, Subjects, and TutoringSessions table to incorporate our data. 
+
+## Seed.py
+Seed.py- shows all the functions using these tables. Our students data is randomized using Faker with names, emails, and phone numbers. Tutors data is also randomized using Faker with names and prices consisting of a random integer between 100-300. Our subject data is fixed manual data because it stays consistent. 
+
+## Cli.py
+Cli.py- This is where everything comes together in our Terminal. By running python cli.py in your terminal, you can interact with our data. 
+
+## Helpers.py
+Helpers.py- Allows Cli to input data from our models.py and seed.py files. 
+
+
+
+
+
 # Phase 3 CLI Project Template
 
 ## Learning Goals
