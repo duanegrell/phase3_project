@@ -53,7 +53,7 @@ for i in range(20):
     tutor = Tutors(
         name = f"{fake.first_name()}",
         specialty = random.choice(subject_list),
-        rate = f"$ {randint(100, 300)}"
+        rate = randint(100, 300)
     )
     session.add(tutor)
     session.commit()
